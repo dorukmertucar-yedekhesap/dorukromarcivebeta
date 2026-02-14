@@ -13,14 +13,30 @@ body {
     color: white;
 }
 
-/* Üst başlık */
+/* Admin butonu */
+.admin {
+    background: #e91e63;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 15px auto;
+    display: block;
+}
+.admin:hover {
+    background: #f06292;
+}
+
+/* Header */
 header {
     background: #1976d2;
     padding: 20px;
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    box-shadow: 0 0 15px #000;
+    box-shadow: 0 0 10px #000;
 }
 
 /* Beta yazısı */
@@ -41,7 +57,7 @@ header {
 .devices {
     display: flex;
     gap: 15px;
-    overflow-x: auto; /* SAĞ-SOL KAYDIRMA */
+    overflow-x: auto; /* yatay kaydırma */
     overflow-y: hidden;
     padding: 20px;
 }
@@ -72,7 +88,7 @@ header {
     margin-bottom: 10px;
 }
 
-/* Buton */
+/* Cihaz butonları */
 button {
     background: #2196f3;
     border: none;
@@ -91,20 +107,18 @@ button:hover {
 
 <body>
 
+<!-- Admin butonu en başta -->
+<button class="admin" onclick="location.href='6128.html'">Admin</button>
+
 <header>Doruk’un ROM Arşivi</header>
 <div class="beta">⚠️ Beta - Yapım Aşamasında</div>
 
-<div class="devices"
-        <div class="card">
+<div class="devices">
+    <div class="card">
         <h2>Galaxy S2</h2>
         <p>Stock & Custom ROM</p>
         <button onclick="location.href='s2.html'">Aç</button>
     </div>
-   <div class="card">
-        <h2>Admin</h2>
-        <p></p>
-        <button onclick="location.href='6128.html'">Aç</button>
-        <div>
     <div class="card">
         <h2>Galaxy S3</h2>
         <p>Stock & Custom ROM</p>
@@ -116,6 +130,11 @@ button:hover {
         <button onclick="location.href='s3neo.html'">Aç</button>
     </div>
     <div class="card">
+        <h2>Galaxy S3 Mini</h2>
+        <p>Stock & Custom ROM</p>
+        <button onclick="location.href='s3mini.html'">Aç</button>
+    </div>
+    <div class="card">
         <h2>Galaxy S4</h2>
         <p>Stock & Custom ROM</p>
         <button onclick="location.href='s4.html'">Aç</button>
@@ -125,11 +144,6 @@ button:hover {
         <p>Stock & Custom ROM</p>
         <button onclick="location.href='s4mini.html'">Aç</button>
     </div>
-    <div class="card">
-        <h2>galaxys3mini</h2>
-        <p>stock custom</p>
-        <button onclick="location.href='s3mini.html'">Aç</button>
-   </div>
 </div>
 
 </body>
