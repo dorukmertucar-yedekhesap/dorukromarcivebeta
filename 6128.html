@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+<script>
+function checkPassword() {
+    const pass = prompt("Admin parolasını gir:");
+    if(pass !== "doruk6128") {
+        alert("Yanlış parola!");
+        window.location.href = "index.html"; // Ana sayfaya gönder
+    }
+}
+window.onload = checkPassword;
+</script>
+</head>
+<body>
+<h1>Admin Paneli</h1>
+<p>Burada ROM ekleme ve yönetim işlemleri olacak.</p>
+</body>
+</html>
