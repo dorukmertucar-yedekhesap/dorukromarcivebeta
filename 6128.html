@@ -35,7 +35,24 @@ function romlariGoster() {
             <button onclick="duzenle(${index})">Düzelt</button>
             <button onclick="sil(${index})">Sil</button>
         </div>`;
-    });
+   
+});
+<h2>Site Kontrol</h2>
+
+<button onclick="siteyiAc()">Siteyi Etkinleştir</button>
+<button onclick="siteyiKapat()">Siteyi Devre Dışı Bırak</button>
+
+<script>
+function siteyiKapat() {
+  localStorage.setItem("siteDurum", "kapali");
+  alert("Site devre dışı bırakıldı! Yapım aşamasında modu aktif.");
+}
+
+function siteyiAc() {
+  localStorage.setItem("siteDurum", "acik");
+  alert("Site tekrar aktif edildi!");
+}
+</script>
 }
 
 function sil(index) {
