@@ -3,78 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doruk'un ROM Arşivi (Beta)</title>
+<title>Doruk’un ROM Arşivi</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0f172a;
+    background: linear-gradient(180deg, #0d47a1, #021a3a);
     color: white;
-    text-align: center;
 }
 
+/* Üst başlık */
 header {
-    background: #1e293b;
+    background: #1976d2;
     padding: 20px;
     font-size: 24px;
     font-weight: bold;
+    text-align: center;
+    box-shadow: 0 0 15px #000;
 }
 
-.container {
-    margin-top: 50px;
+/* Beta yazısı */
+.beta {
+    background: #ff9800;
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
+    animation: glow 1.5s infinite alternate;
 }
 
-button {
-    background: #2563eb;
-    border: none;
-    padding: 15px 25px;
-    margin: 10px;
+@keyframes glow {
+    from { opacity: 0.6; }
+    to { opacity: 1; }
+}
+
+/* Cihaz bölümü */
+.devices {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* SAĞ-SOL KAYDIRMA */
+    overflow-y: hidden;
+    padding: 20px;
+}
+
+/* Cihaz kartları */
+.card {
+    min-width: 200px;
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #000;
+    transition: 0.3s;
+    text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    background: rgba(255,255,255,0.2);
+}
+
+.card h2 {
+    margin: 0 0 10px 0;
     font-size: 18px;
-    border-radius: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Buton */
+button {
+    background: #2196f3;
+    border: none;
+    padding: 10px 15px;
     color: white;
+    font-size: 14px;
+    border-radius: 10px;
     cursor: pointer;
 }
 
 button:hover {
-    background: #1d4ed8;
+    background: #42a5f5;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-Doruk'un ROM Arşivi (Beta)
-</header>
+<header>Doruk’un ROM Arşivi</header>
+<div class="beta">⚠️ Beta - Yapım Aşamasında</div>
 
-<div class="container">
-    <h1>Hoş Geldin 👋</h1>
-    <p>Cihazını seç:</p>
-
-    <br>
-
-    <button onclick="location.href='s4.html'">Galaxy S4</button>
-    <button onclick="location.href='s2.html'">Galaxy S2</button>
-    <button onclick="location.href='s3.html'">Galaxy S3</button>
-    <button onclick="location.href='s3neo.html'">Galaxy S3 Neo</button>
+<div class="devices">
+    <div class="card">
+        <h2>Galaxy S2</h2>
+        <p>Stock & Custom ROM</p>
+        <button onclick="location.href='s2.html'">Aç</button>
+    </div>
+    <div class="card">
+        <h2>Galaxy S3</h2>
+        <p>Stock & Custom ROM</p>
+        <button onclick="location.href='s3.html'">Aç</button>
+    </div>
+    <div class="card">
+        <h2>Galaxy S3 Neo</h2>
+        <p>Yakında</p>
+        <button onclick="alert('S3 Neo ROM yakında')">Aç</button>
+    </div>
+    <div class="card">
+        <h2>Galaxy S4</h2>
+        <p>Stock & Custom ROM</p>
+        <button onclick="location.href='s4.html'">Aç</button>
+    </div>
+    <div class="card">
+        <h2>Galaxy S4 Mini</h2>
+        <p>Yakında</p>
+        <button onclick="alert('S4 Mini ROM yakında')">Aç</button>
+    </div>
+    <div class="card">
+        <h2>Custom ROM</h2>
+        <p>LineageOS / AOSP</p>
+        <button onclick="alert('Yakında eklenecek')">Gör</button>
+    </div>
 </div>
-
-<!-- MÜZİK (indexe tıklayınca başlar) -->
-<audio id="bgm" loop>
-    <source src="muzik.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-const muzikler = ["muzik.mp3"]; // İstersen buraya birden fazla müzik ekleyebilirsin
-
-window.addEventListener("click", () => {
-    const bgm = document.getElementById("bgm");
-    const rastgele = muzikler[Math.floor(Math.random() * muzikler.length)];
-    bgm.src = rastgele;
-    bgm.play();
-}, { once: true });
-</script>
 
 </body>
 </html>
