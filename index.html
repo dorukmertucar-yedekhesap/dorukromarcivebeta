@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doruk'un ROM Arşivi (Beta)</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
+
+header {
+    background: #1e293b;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+button {
+    background: #2563eb;
+    border: none;
+    padding: 15px 25px;
+    margin: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+Doruk'un ROM Arşivi (Beta)
+</header>
+
+<div class="container">
+    <h1>Hoş Geldin 👋</h1>
+    <p>Cihazını seç:</p>
+
+    <br>
+
+    <button onclick="location.href='s2.html'">Galaxy S2</button>
+    <button onclick="location.href='s3.html'">Galaxy S3</button>
+    <button onclick="location.href='s3neo.html'">Galaxy S3 Neo</button>
+</div>
+
+<!-- MÜZİK (indexe tıklayınca başlar) -->
+<audio id="bgm" loop>
+    <source src="muzik.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const muzikler = ["muzik.mp3"]; // İstersen buraya birden fazla müzik ekleyebilirsin
+
+window.addEventListener("click", () => {
+    const bgm = document.getElementById("bgm");
+    const rastgele = muzikler[Math.floor(Math.random() * muzikler.length)];
+    bgm.src = rastgele;
+    bgm.play();
+}, { once: true });
+</script>
+
+</body>
+</html>
