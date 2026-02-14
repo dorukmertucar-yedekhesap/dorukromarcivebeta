@@ -1,100 +1,78 @@
- color: white;
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doruk’un ROM Arşivi</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin:0;
+    padding:20px;
+    background:#f0f0f0;
+    text-align:center;
 }
 
-/* Üst başlık */
-/* Admin butonu */
-.admin {
-    background: #e91e63;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    margin: 15px auto;
-    display: block;
-}
-.admin:hover {
-    background: #f06292;
+/* Başlık */
+h1 {
+    color:#333;
+    margin-bottom:10px;
 }
 
-/* Header */
-header {
-    background: #1976d2;
-    padding: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    box-shadow: 0 0 15px #000;
-    box-shadow: 0 0 10px #000;
+/* Admin Tuşu */
+#adminBtn {
+    padding:10px 20px;
+    font-size:16px;
+    cursor:pointer;
+    margin-bottom:20px;
 }
 
-/* Beta yazısı */
-@@ -41,7 +57,7 @@
-.devices {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto; /* SAĞ-SOL KAYDIRMA */
-    overflow-x: auto; /* yatay kaydırma */
-    overflow-y: hidden;
-    padding: 20px;
+/* Cihaz Kartları */
+#siteContent {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
 }
-@@ -72,7 +88,7 @@
-    margin-bottom: 10px;
+.card {
+    background:#00bfff;
+    color:white;
+    width:150px;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    cursor:pointer;
+    transition: transform 0.2s;
 }
-
-/* Buton */
-/* Cihaz butonları */
-button {
-    background: #2196f3;
-    border: none;
-@@ -91,20 +107,18 @@
-
+.card:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
 <body>
 
-<!-- Admin butonu en başta -->
-<button class="admin" onclick="location.href='6128.html'">Admin</button>
+<h1>Doruk ROM Arşivi</h1>
 
-<header>Doruk’un ROM Arşivi</header>
-<div class="beta">⚠️ Beta - Yapım Aşamasında</div>
+<!-- Admin Tuşu Başlığın Altında -->
+<button id="adminBtn">Admin</button>
 
-<div class="devices"
-        <div class="card">
-<div class="devices">
-    <div class="card">
-        <h2>Galaxy S2</h2>
-        <p>Stock & Custom ROM</p>
-        <button onclick="location.href='s2.html'">Aç</button>
-    </div>
-   <div class="card">
-        <h2>Admin</h2>
-        <p></p>
-        <button onclick="location.href='6128.html'">Aç</button>
-        <div>
-    <div class="card">
-        <h2>Galaxy S3</h2>
-        <p>Stock & Custom ROM</p>
-@@ -115,6 +129,11 @@ <h2>Galaxy S3 Neo</h2>
-        <p>Stock & Custom ROM</p>
-        <button onclick="location.href='s3neo.html'">Aç</button>
-    </div>
-    <div class="card">
-        <h2>Galaxy S3 Mini</h2>
-        <p>Stock & Custom ROM</p>
-        <button onclick="location.href='s3mini.html'">Aç</button>
-    </div>
-    <div class="card">
-        <h2>Galaxy S4</h2>
-        <p>Stock & Custom ROM</p>
-@@ -125,11 +144,6 @@ <h2>Galaxy S4 Mini</h2>
-        <p>Stock & Custom ROM</p>
-        <button onclick="location.href='s4mini.html'">Aç</button>
-    </div>
-    <div class="card">
-        <h2>galaxys3mini</h2>
-        <p>stock custom</p>
-        <button onclick="location.href='s3mini.html'">Aç</button>
-   </div>
+<!-- Cihaz Kartları -->
+<div id="siteContent">
+    <div class="card">Galaxy S2</div>
+    <div class="card">Galaxy S3</div>
+    <div class="card">Galaxy S3 Neo</div>
+    <div class="card">Galaxy S4</div>
+    <div class="card">Galaxy S4 Mini</div>
+    <div class="card">Galaxy S3 Mini</div>
 </div>
 
+<script>
+// Admin tuşuna basılınca bir şey yapmak istersen buraya ekle
+const adminBtn = document.getElementById("adminBtn");
+adminBtn.addEventListener("click", (6128.html)=>{
+    alert("sifrwyibiliyosandevamedecen.");
+});
+</script>
+
 </body>
+</html>
