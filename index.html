@@ -1,190 +1,143 @@
-<script>
-let romlar = JSON.parse(localStorage.getItem("romlar")) || [];
-
-function romlariGoster() {
-    const liste = document.getElementById("romList");
-    liste.innerHTML = "";
-
-    romlar.forEach((rom, index) => {
-        liste.innerHTML += `
-        <div class="rom-card">
-            <h3>${rom.isim}</h3>
-            <p>${rom.android}</p>
-            <a href="${rom.link}" target="_blank">İndir</a>
-            <br><br>
-            <button onclick="duzenle(${index})">Düzelt</button>
-            <button onclick="sil(${index})">Sil</button>
-        </div>`;
-    });
-}
-
-function sil(index) {
-    romlar.splice(index, 1);
-    localStorage.setItem("romlar", JSON.stringify(romlar));
-    romlariGoster();
-}
-
-function duzenle(index) {
-    let yeniIsim = prompt("Yeni ROM adı:", romlar[index].isim);
-    let yeniLink = prompt("Yeni link:", romlar[index].link);
-
-    if (yeniIsim && yeniLink) {
-        romlar[index].isim = yeniIsim;
-        romlar[index].link = yeniLink;
-        localStorage.setItem("romlar", JSON.stringify(romlar));
-        romlariGoster();
-    }
-}
-
-romlariGoster();
-</script>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Doruk’un ROM Arşivi</title>
-
 <style>
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(180deg, #0d47a1, #021a3a);
-    color: white;
+    margin:0;
+    padding:0;
+    background:#f0f0f0;
 }
 
-/* Admin butonu */
-.admin {
-    background: #e91e63;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    margin: 15px auto;
-    display: block;
-}
-.admin:hover {
-    background: #f06292;
-}
-
-/* Header */
-header {
-    background: #1976d2;
-    padding: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    box-shadow: 0 0 10px #000;
+/* Overlay */
+#maintenanceOverlay {
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:black;
+    color:white;
+    z-index:9999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-size:30px;
 }
 
-/* Beta yazısı */
-.beta {
-    background: #ff9800;
-    padding: 5px;
-    font-size: 14px;
-    text-align: center;
-    animation: glow 1.5s infinite alternate;
+.dvd {
+    font-size:30px;
+    font-weight:bold;
+    color:#00bfff;
+    animation:move 6s linear infinite;
 }
 
-@keyframes glow {
-    from { opacity: 0.6; }
-    to { opacity: 1; }
+@keyframes move {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(80vw,0); }
+  50% { transform: translate(80vw,80vh); }
+  75% { transform: translate(0,80vh); }
+  100% { transform: translate(0,0); }
 }
 
-/* Cihaz bölümü */
-.devices {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto; /* yatay kaydırma */
-    overflow-y: hidden;
-    padding: 20px;
+/* Cihaz Kartları */
+#siteContent {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    padding:20px;
 }
-
-/* Cihaz kartları */
 .card {
-    min-width: 200px;
-    background: rgba(255,255,255,0.1);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px #000;
-    transition: 0.3s;
-    text-align: center;
+    background:#00bfff;
+    color:white;
+    width:150px;
+    margin:10px;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    cursor:pointer;
+    transition: transform 0.2s;
 }
-
 .card:hover {
     transform: scale(1.05);
-    background: rgba(255,255,255,0.2);
 }
 
-.card h2 {
-    margin: 0 0 10px 0;
-    font-size: 18px;
+/* Admin Panel */
+#adminPanel {
+    position:fixed;
+    top:10px;
+    right:10px;
+    background:white;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    z-index:10000;
 }
-
-.card p {
-    font-size: 14px;
-    margin-bottom: 10px;
-}
-
-/* Cihaz butonları */
-button {
-    background: #2196f3;
-    border: none;
-    padding: 10px 15px;
-    color: white;
-    font-size: 14px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #42a5f5;
+#adminPanel button {
+    margin:5px 0;
+    padding:5px 10px;
 }
 </style>
 </head>
-
 <body>
 
-<!-- Admin butonu en başta -->
-<button class="admin" onclick="location.href='6128.html'">Admin</button>
-
-<header>Doruk’un ROM Arşivi</header>
-<div class="beta">⚠️ Beta - Yapım Aşamasında</div>
-
-<div class="devices">
-    <div class="card">
-        <h2>Galaxy S2</h2>
-        <p>Stock & Custom ROM</p>
-        <button onclick="location.href='s2.html'">Aç</button>
-    </div>
-    <div class="card">
-        <h2>Galaxy S3</h2>
-        <p>Stock & Custom ROM</p>
-        <button onclick="location.href='s3.html'">Aç</button>
-    </div>
-    <div class="card">
-        <h2>Galaxy S3 Neo</h2>
-        <p>Stock & Custom ROM</p>
-        <button onclick="location.href='s3neo.html'">Aç</button>
-    </div>
-    <div class="card">
-        <h2>Galaxy S3 Mini</h2>
-        <p>Stock & Custom ROM</p>
-        <button onclick="location.href='s3mini.html'">Aç</button>
-    </div>
-    <div class="card">
-        <h2>Galaxy S4</h2>
-        <p>Stock & Custom ROM</p>
-        <button onclick="location.href='s4.html'">Aç</button>
-    </div>
-    <div class="card">
-        <h2>Galaxy S4 Mini</h2>
-        <p>Stock & Custom ROM</p>
-        <button onclick="location.href='s4mini.html'">Aç</button>
-    </div>
+<!-- Overlay -->
+<div id="maintenanceOverlay">
+    <div class="dvd">🚧 YAPIM AŞAMASINDA 🚧</div>
+    <p>Site şu anda devre dışı, lütfen sonra tekrar deneyin.</p>
 </div>
+
+<!-- Site İçeriği -->
+<div id="siteContent">
+    <div class="card">Galaxy S2</div>
+    <div class="card">Galaxy S3</div>
+    <div class="card">Galaxy S3 Neo</div>
+    <div class="card">Galaxy S4</div>
+    <div class="card">Galaxy S4 Mini</div>
+    <div class="card">Galaxy S3 Mini</div>
+</div>
+
+<!-- Admin Panel -->
+<div id="adminPanel">
+    <h4>Admin Panel</h4>
+    <button onclick="siteyiKapat()">Siteyi Devre Dışı Bırak</button>
+    <button onclick="siteyiAc()">Siteyi Etkinleştir</button>
+</div>
+
+<script>
+// Overlay kontrol
+function overlayKontrol() {
+    const durum = localStorage.getItem("siteDurum") || "acik";
+    const overlay = document.getElementById("maintenanceOverlay");
+    const site = document.getElementById("siteContent");
+
+    if(durum === "kapali") {
+        overlay.style.display = "flex";
+        site.style.filter = "blur(5px)";
+        site.style.pointerEvents = "none"; // tıklamayı kapat
+    } else {
+        overlay.style.display = "none";
+        site.style.filter = "none";
+        site.style.pointerEvents = "auto";
+    }
+}
+
+// Buton fonksiyonları
+function siteyiKapat() {
+    localStorage.setItem("siteDurum", "kapali");
+    overlayKontrol();
+}
+function siteyiAc() {
+    localStorage.setItem("siteDurum", "acik");
+    overlayKontrol();
+}
+
+// Sayfa açılır açılmaz kontrol
+overlayKontrol();
+</script>
 
 </body>
 </html>
