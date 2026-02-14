@@ -1,3 +1,19 @@
+<h2>Site Kontrol</h2>
+
+<button onclick="siteyiAc()">Siteyi Etkinleştir</button>
+<button onclick="siteyiKapat()">Siteyi Devre Dışı Bırak</button>
+
+<script>
+function siteyiKapat() {
+  localStorage.setItem("siteDurum", "kapali");
+  alert("Site devre dışı bırakıldı! Yapım aşamasında modu aktif.");
+}
+
+function siteyiAc() {
+  localStorage.setItem("siteDurum", "acik");
+  alert("Site tekrar aktif edildi!");
+}
+</script>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -20,58 +36,6 @@ window.onload = checkPassword;
 <p>Burada ROM ekleme ve yönetim işlemleri olacak.</p>
 <script>
 let romlar = JSON.parse(localStorage.getItem("romlar")) || [];
-
-function romlariGoster() {
-    const liste = document.getElementById("romList");
-    liste.innerHTML = "";
-
-    romlar.forEach((rom, index) => {
-        liste.innerHTML += `
-        <div class="rom-card">
-            <h3>${rom.isim}</h3>
-            <p>${rom.android}</p>
-            <a href="${rom.link}" target="_blank">İndir</a>
-            <br><br>
-            <button onclick="duzenle(${index})">Düzelt</button>
-            <button onclick="sil(${index})">Sil</button>
-        </div>`;
-   <h2>Site Kontrol</h2>
-
-<button onclick="siteyiAc()">Siteyi Etkinleştir</button>
-<button onclick="siteyiKapat()">Siteyi Devre Dışı Bırak</button>
-
-<script>
-function siteyiKapat() {
-  localStorage.setItem("siteDurum", "kapali");
-  alert("Site devre dışı bırakıldı! Yapım aşamasında modu aktif.");
-}
-});
-
-
-function siteyiAc() {
-  localStorage.setItem("siteDurum", "acik");
-  alert("Site tekrar aktif edildi!");
-}
-</script>
-}
-
-function sil(index) {
-    romlar.splice(index, 1);
-    localStorage.setItem("romlar", JSON.stringify(romlar));
-    romlariGoster();
-}
-
-function duzenle(index) {
-    let yeniIsim = prompt("Yeni ROM adı:", romlar[index].isim);
-    let yeniLink = prompt("Yeni link:", romlar[index].link);
-
-    if (yeniIsim && yeniLink) {
-        romlar[index].isim = yeniIsim;
-        romlar[index].link = yeniLink;
-        localStorage.setItem("romlar", JSON.stringify(romlar));
-        romlariGoster();
-    }
-}
 
 romlariGoster();
 </script>
