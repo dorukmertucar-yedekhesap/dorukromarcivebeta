@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy S4 Arşivi</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #0d47a1, #021a3a);
+    color: white;
+}
+
+/* Üst bar */
+.topbar {
+    background: #1976d2;
+    padding: 15px;
+    font-size: 22px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 0 10px black;
+}
+
+/* Geri butonu */
+.back {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    background: #1565c0;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* İçerik alanı (kaydırılabilir) */
+.container {
+    padding: 20px;
+    height: 85vh;
+    overflow-y: auto;
+}
+
+/* Kart tasarımı */
+.card {
+    background: rgba(255,255,255,0.08);
+    margin-bottom: 15px;
+    padding: 18px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #000;
+    transition: 0.3s;
+}
+
+.card:hover {
+    background: rgba(255,255,255,0.18);
+    transform: scale(1.02);
+}
+
+.title {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.desc {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+/* Buton */
+button {
+    background: #2196f3;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #42a5f5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    <button class="back" onclick="history.back()">←</button>
+    Galaxy S4 ROM Arşivi
+</div>
+
+<div class="container">
+
+    <div class="card">
+        <div class="title">GT-I9500 (Exynos)</div>
+        <div class="desc">Stock ve Custom ROM arşivi</div>
+        <button onclick="alert('I9500 ROM yakında')">ROM'ları Aç</button>
+    </div>
+
+    <div class="card">
+        <div class="title">GT-I9505 (Snapdragon LTE)</div>
+        <div class="desc">LTE destekli S4 sürümü</div>
+        <button onclick="alert('I9505 ROM yakında')">ROM'ları Aç</button>
+    </div>
+
+    <div class="card">
+        <div class="title">Stock Samsung ROM</div>
+        <div class="desc">Orijinal TouchWiz yazılım</div>
+        <button onclick="alert('İndirme linki eklenecek')">İndir</button>
+    </div>
+
+    <div class="card">
+        <div class="title">LineageOS</div>
+        <div class="desc">Android 10 / 11 Custom ROM</div>
+        <button onclick="alert('Yakında eklenecek')">Görüntüle</button>
+    </div>
+
+    <div class="card">
+        <div class="title">TWRP & Recovery</div>
+        <div class="desc">Root ve recovery dosyaları</div>
+        <button onclick="alert('Recovery arşivi hazırlanıyor')">Aç</button>
+    </div>
+
+</div>
+
+</body>
+</html>
