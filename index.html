@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doruk’un ROM Arşivi</title>
+<title>Doruk ROM Arşivi</title>
 <style>
 body {
     font-family: Arial, sans-serif;
@@ -24,7 +24,15 @@ h1 {
     padding:10px 20px;
     font-size:16px;
     cursor:pointer;
-    margin-bottom:20px;
+    margin-bottom:30px;
+    background:#00bfff;
+    color:white;
+    border:none;
+    border-radius:5px;
+    transition: transform 0.2s;
+}
+#adminBtn:hover {
+    transform: scale(1.05);
 }
 
 /* Cihaz Kartları */
@@ -67,10 +75,9 @@ h1 {
 </div>
 
 <script>
-// Admin tuşuna basılınca bir şey yapmak istersen buraya ekle
-const adminBtn = document.getElementById("adminBtn");
-adminBtn.addEventListener("click", (6128.html)=>{
-    alert("sifrwyibiliyosandevamedecen.");
+// Admin tuşu şimdilik alert gösteriyor, ileride işlev ekleyebilirsin
+document.getElementById("adminBtn").addEventListener("click", () => {
+    alert("Admin tuşuna bastın! Buraya işlemler ekleyebilirsin.");
 });
 </script>
 
