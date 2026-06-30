@@ -1,10 +1,180 @@
-<!-- Cihaz Panelleri -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doruk'un ROM Arşivi</title>
+    <style>
+        /* Samsung Experience 8.5 & Saf Siyah Tema Renkleri */
+        :root {
+            --bg-dark: #000000;
+            --panel-bg: #0a0f18;
+            --samsung-blue: #4a90e2;
+            --samsung-blue-hover: #357abd;
+            --admin-red: #d9534f;
+            --warning-orange: #f0ad4e;
+            --text-primary: #ffffff;
+            --text-secondary: #a4b0be;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+
+        header {
+            width: 100%;
+            background-color: #05080c;
+            padding: 40px 20px 25px 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid #111a28;
+        }
+
+        .admin-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background-color: transparent;
+            color: var(--admin-red);
+            border: 1px solid var(--admin-red);
+            padding: 6px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .admin-btn:hover {
+            background-color: var(--admin-red);
+            color: white;
+            box-shadow: 0 0 10px rgba(217, 83, 79, 0.4);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+        }
+
+        .beta-banner {
+            background-color: rgba(240, 173, 78, 0.1);
+            color: var(--warning-orange);
+            border-bottom: 1px solid rgba(240, 173, 78, 0.2);
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            padding: 50px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .rom-card {
+            background-color: var(--panel-bg);
+            border: 1px solid #162235;
+            border-radius: 24px;
+            padding: 30px 25px;
+            text-align: center;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .rom-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--samsung-blue);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.15);
+        }
+
+        .card-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 20px auto;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #24354f;
+        }
+
+        .card-icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--samsung-blue);
+        }
+
+        .rom-card h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .rom-card p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .action-btn {
+            display: block;
+            background-color: var(--samsung-blue);
+            color: white;
+            padding: 12px 0;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            width: 85%;
+            margin: 0 auto;
+        }
+
+        .action-btn:hover {
+            background-color: var(--samsung-blue-hover);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="admin-btn">Admin</a>
+        <h1>Doruk'un ROM Arşivi</h1>
+    </header>
+
+    <div class="beta-banner">
+        Şu an Experience 8.5 teması aktif • Cihaz listesi güncellendi.
+    </div>
+
     <div class="container">
 
         <!-- Proje: Doros (Note 4 Lite) -->
         <div class="rom-card" style="border-color: rgba(74, 144, 226, 0.4);">
             <div class="card-icon" style="background: linear-gradient(135deg, #2c3e50, #000000);">
-                <!-- Yıldızlı Özel Proje İkonu -->
                 <svg viewBox="0 0 24 24"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg>
             </div>
             <h3>Doros ROM</h3>
@@ -53,3 +223,6 @@
         </div>
 
     </div>
+
+</body>
+</html>
