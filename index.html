@@ -1,191 +1,30 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doruk'un ROM Arşivi</title>
-    <style>
-        /* Samsung Experience 8.5 & Saf Siyah Tema Renkleri */
-        :root {
-            --bg-dark: #000000;
-            --panel-bg: #0a0f18; /* Hafif laciverte çalan çok koyu gri-siyah */
-            --samsung-blue: #4a90e2; /* Klasik Samsung arayüz mavisi */
-            --samsung-blue-hover: #357abd;
-            --admin-red: #d9534f;
-            --warning-orange: #f0ad4e;
-            --text-primary: #ffffff;
-            --text-secondary: #a4b0be;
-            --border-radius-se: #1a2332; /* Kartların iç çerçevesi */
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 50px;
-        }
-
-        /* Üst Başlık Alanı - Samsung Experience Minimalizmi */
-        header {
-            width: 100%;
-            background-color: #05080c;
-            padding: 40px 20px 25px 20px;
-            text-align: center;
-            position: relative;
-            border-bottom: 1px solid #111a28;
-        }
-
-        .admin-btn {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-            background-color: transparent;
-            color: var(--admin-red);
-            border: 1px solid var(--admin-red);
-            padding: 6px 18px;
-            border-radius: 20px; /* Yuvarlatılmış hatlar */
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .admin-btn:hover {
-            background-color: var(--admin-red);
-            color: white;
-            box-shadow: 0 0 10px rgba(217, 83, 79, 0.4);
-        }
-
-        header h1 {
-            font-size: 2.2rem;
-            font-weight: 300; /* SE 8.5 ince yazı estetiği */
-            letter-spacing: 0.5px;
-            color: var(--text-primary);
-        }
-
-        /* Bilgilendirme Şeridi */
-        .beta-banner {
-            background-color: rgba(240, 173, 78, 0.1);
-            color: var(--warning-orange);
-            border-bottom: 1px solid rgba(240, 173, 78, 0.2);
-            width: 100%;
-            padding: 12px;
-            text-align: center;
-            font-weight: 400;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-        }
-
-        /* Kart Konteyneri */
-        .container {
-            max-width: 1100px;
-            width: 100%;
-            padding: 50px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        /* Samsung Experience Stilinde Cihaz Kartları */
-        .rom-card {
-            background-color: var(--panel-bg);
-            border: 1px solid #162235;
-            border-radius: 24px; /* Tam SE 8.5 yumuşak köşeleri */
-            padding: 30px 25px;
-            text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .rom-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--samsung-blue);
-            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.15);
-        }
-
-        /* İkon Alanı (Buraya SE tarzı görseller veya ikonlar gelecek) */
-        .card-icon {
-            width: 65px;
-            height: 65px;
-            margin: 0 auto 20px auto;
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            border-radius: 18px; /* SE 8.5 squircle / yumuşatılmış kare ikon yapısı */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #24354f;
-        }
-
-        .card-icon svg {
-            width: 32px;
-            height: 32px;
-            fill: var(--samsung-blue);
-        }
-
-        .rom-card h3 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .rom-card p {
-            color: var(--text-secondary);
-            font-size: 13px;
-            margin-bottom: 25px;
-            font-weight: 300;
-        }
-
-        /* Yuvarlatılmış SE Tipi Butonlar */
-        .action-btn {
-            display: block;
-            background-color: var(--samsung-blue);
-            color: white;
-            padding: 12px 0;
-            border-radius: 25px; /* Tam yuvarlak premium butonlar */
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
-            transition: background-color 0.2s ease, box-shadow 0.2s ease;
-            width: 85%;
-            margin: 0 auto;
-        }
-
-        .action-btn:hover {
-            background-color: var(--samsung-blue-hover);
-            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Üst Menü -->
-    <header>
-        <a href="#" class="admin-btn">Admin</a>
-        <h1>Doruk'un ROM Arşivi</h1>
-    </header>
-
-    <!-- Durum Şeridi -->
-    <div class="beta-banner">
-        Şu an Experience 8.5 teması aktif • Linkler baştan yapılandırılıyor.
-    </div>
-
-    <!-- Cihaz Panelleri -->
+<!-- Cihaz Panelleri -->
     <div class="container">
 
-        <!-- Galaxy S3 -->
+        <!-- Proje: Doros (Note 4 Lite) -->
+        <div class="rom-card" style="border-color: rgba(74, 144, 226, 0.4);">
+            <div class="card-icon" style="background: linear-gradient(135deg, #2c3e50, #000000);">
+                <!-- Yıldızlı Özel Proje İkonu -->
+                <svg viewBox="0 0 24 24"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg>
+            </div>
+            <h3>Doros ROM</h3>
+            <p>Note 4 Lite Base • Android 4.4.4 Custom ROM</p>
+            <a href="#" class="action-btn" style="background-color: #2e7d32;">Aç</a>
+        </div>
+
+        <!-- Cihaz: Galaxy S2 -->
         <div class="rom-card">
             <div class="card-icon">
-                <!-- Samsung Telefon Esintili Minimal SVG İkon -->
+                <svg viewBox="0 0 24 24"><path d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21C5,22.1 5.89,23 7,23H17C18.1,23 19,22.1 19,21V3C19,1.89 18.1,1 17,1Z"/></svg>
+            </div>
+            <h3>Galaxy S2</h3>
+            <p>Stock & Custom ROM Arşivi</p>
+            <a href="#" class="action-btn">Aç</a>
+        </div>
+
+        <!-- Cihaz: Galaxy S3 -->
+        <div class="rom-card">
+            <div class="card-icon">
                 <svg viewBox="0 0 24 24"><path d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21C5,22.1 5.89,23 7,23H17C18.1,23 19,22.1 19,21V3C19,1.89 18.1,1 17,1Z"/></svg>
             </div>
             <h3>Galaxy S3</h3>
@@ -193,17 +32,24 @@
             <a href="#" class="action-btn">Aç</a>
         </div>
 
-        <!-- Galaxy S3 Neo -->
+        <!-- Cihaz: Galaxy S4 -->
         <div class="rom-card">
             <div class="card-icon">
                 <svg viewBox="0 0 24 24"><path d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21C5,22.1 5.89,23 7,23H17C18.1,23 19,22.1 19,21V3C19,1.89 18.1,1 17,1Z"/></svg>
             </div>
-            <h3>Galaxy S3 Neo</h3>
+            <h3>Galaxy S4</h3>
+            <p>Stock & Custom ROM Arşivi</p>
+            <a href="#" class="action-btn">Aç</a>
+        </div>
+
+        <!-- Cihaz: Galaxy S5 LTE-A -->
+        <div class="rom-card">
+            <div class="card-icon">
+                <svg viewBox="0 0 24 24"><path d="M17,19H7V5H17M17,1H7C5.89,1 5,1.89 5,3V21C5,22.1 5.89,23 7,23H17C18.1,23 19,22.1 19,21V3C19,1.89 18.1,1 17,1Z"/></svg>
+            </div>
+            <h3>Galaxy S5 LTE-A</h3>
             <p>Stock & Custom ROM Arşivi</p>
             <a href="#" class="action-btn">Aç</a>
         </div>
 
     </div>
-
-</body>
-</html>
